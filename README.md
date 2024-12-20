@@ -7,7 +7,7 @@ A simple page with links
 * Docker
 
 ## Commands
-* `start-links` - Starts links in detached mode at http://localhost:8001/
+* `start-links` - Starts links in detached mode at http://localhost:8001/ - change the port by setting $LINKS_PORT
 * `stop-links` - Stops links container and removes it
 
 ## Adding links

@@ -1,8 +1,9 @@
 #!/bin/sh
 
 WWW_PATH="$PWD/www"
+LINKS_PORT=${LINKS_PORT:-8001}
 
 docker stop links
 docker rm links
 docker build -t links .
-docker run -d -p 8001:80 --name links --restart=always -v "$WWW_PATH:/usr/share/nginx/html" links
+docker run -d -p $LINKS_PORT:80 --name links --restart=always -v "$WWW_PATH:/usr/share/nginx/html" links

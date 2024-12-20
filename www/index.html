@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="simple.min.css" />
+    <script>
+      const sections = [
+        {
+          heading: "Section 1",
+          links: [
+            {
+              name: "Microsoft",
+              url: "https://www.microsoft.com",
+            },
+          ],
+        },
+      ];
+    </script>
+
+    <title>Links</title>
+  </head>
+  <body>
+    <header id="top_header">
+      <h1>Links</h1>
+      <p>Ever useful</p>
+    </header>
+
+    <main id="main"></main>
+
+    <footer>
+      <p>Written by Lucio</p>
+    </footer>
+
+    <script src="jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        const toc = $("<menu><h2>Table of Contents</h2><ul></ul></menu>");
+        const tocList = toc.find("ul");
+
+        sections.forEach((section, index) => {
+          const tableId = `section-${index + 1}-table`;
+
+          const sectionElement = $("<section>");
+
+          sectionElement.append(
+            `<h2>${section.heading}</h2><a href="#top_header">Back to Top</a>`,
+          );
+
+          const table = $(`<table id="${tableId}">`);
+
+          section.links.forEach((link) => {
+            table.append(`
+        <tr>
+          <td><a href="${link.url}">${link.name}</a></td>
+        </tr>
+      `);
+          });
+
+          sectionElement.append(table);
+
+          $("#main").append(sectionElement);
+
+          tocList.append(
+            `<li><a href="#${tableId}">${section.heading}</a></li>`,
+          );
+        });
+
+        $("#main").prepend(toc);
+      });
+    </script>
+  </body>
+</html>

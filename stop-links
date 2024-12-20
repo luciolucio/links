@@ -1,0 +1,4 @@
+#!/bin/sh
+
+docker stop links
+docker rm links

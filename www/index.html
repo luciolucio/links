@@ -40,15 +40,15 @@
         const tocList = toc.find("ul");
 
         sections.forEach((section, index) => {
-          const tableId = `section-${index + 1}-table`;
+          const sectionId = `section-${index + 1}-table`;
 
-          const sectionElement = $("<section>");
+          const sectionElement = $(`<section id="${sectionId}">`);
 
           sectionElement.append(
             `<h2>${section.heading}</h2><a href="#top_header">Back to Top</a>`,
           );
 
-          const table = $(`<table id="${tableId}">`);
+          const table = $(`<table>`);
 
           section.links.forEach((link) => {
             table.append(`
@@ -63,7 +63,7 @@
           $("#main").append(sectionElement);
 
           tocList.append(
-            `<li><a href="#${tableId}">${section.heading}</a></li>`,
+            `<li><a href="#${sectionId}">${section.heading}</a></li>`,
           );
         });
 
